@@ -10,6 +10,8 @@ class Band {
     LocalDate startDate
     LocalDate endDate
     
+    static hasMany = [members: Member, albums: Album]
+    
     static constraints = {
         bio         (nullable: true)
         name        (nullable: false, blank: false)
