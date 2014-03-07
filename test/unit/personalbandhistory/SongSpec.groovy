@@ -19,20 +19,22 @@ class SongSpec extends Specification {
     @Unroll
     void "test #creates a song with name: '#name', lyrics: '#lyrics'"() {
         when:
-            Song newSong= new Song(
+            Song newSong = new Song(
                 name: name, 
-                lyrics: lyrics,
+                lyrics: lyrics
             )
             newSong.save()
-            Song createdSong = Song.findByName(name)
+            Song createdSong = Song.first()
         then:
             if (creates == "creates") {
                 assert createdSong
+                Song.count() == 1
                 createdSong.name == name
-                createdSong.lyrics = lyrics
+                createdSong.lyrics == lyrics
             }
             else {
                 assert !createdSong
+                Song.count() == 1
             }
         where:
             name        | lyrics        ||  creates

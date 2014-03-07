@@ -22,20 +22,22 @@ class AlbumSpec extends Specification {
     @Unroll
     void "test #creates an album with name: '#name', releaseDate: '#releaseDate'"() {
         when:
-            Album newAlbum= new Album(
+            Album newAlbum = new Album(
                 name: name, 
                 releaseDate: releaseDate
             )
             newAlbum.save()
-            Album createdAlbum = Album.findByName(name)
+            Album createdAlbum = Album.first()
         then:
             if (creates == "creates") {
                 assert createdAlbum
+                Album.count() == 1
                 createdAlbum.name == name
-                createdAlbum.releaseDate = releaseDate
+                createdAlbum.releaseDate == releaseDate
             }
             else {
                 assert !createdAlbum
+                Album.count() == 0
             }
         where:
             name        | releaseDate               ||  creates
@@ -48,8 +50,8 @@ class AlbumSpec extends Specification {
     @Unroll
     void "test when adding #songCount songs to an album, the album conatins #expectedSongs songs" () {
         when:
-            Album newAlbum= new Album(
-                name: "test name", 
+            Album newAlbum = new Album(
+                name: "test name"
             )
             newAlbum.save()
            
@@ -73,8 +75,8 @@ class AlbumSpec extends Specification {
     @Unroll
     void "test when adding #memberCount members to an album, the album conatins #expectedMembers members" () {
         when:
-            Album newAlbum= new Album(
-                name: "test name", 
+            Album newAlbum = new Album(
+                name: "test name"
             )
             newAlbum.save()
            

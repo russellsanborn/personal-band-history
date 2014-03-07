@@ -38,18 +38,20 @@ class BandSpec extends Specification {
                 endDate: endDate
             )
             newBand.save()
-            Band createdBand = Band.findByName(name)
+            Band createdBand = Band.first()
         then:
             if (creates == "creates") {
                 assert createdBand
+                Band.count() == 1
                 createdBand.name == name
                 createdBand.bio == bio
-                createdBand.location = location
-                createdBand.startDate = startDate
-                createdBand.endDate = endDate
+                createdBand.location == location
+                createdBand.startDate == startDate
+                createdBand.endDate == endDate
             }
             else {
                 assert !createdBand
+                Band.count() == 0
             }
         where:
             name        | bio        | location   | startDate                 | endDate                   ||  creates
@@ -65,8 +67,8 @@ class BandSpec extends Specification {
     @Unroll
     void "test when adding #albumCount albums to an band, the band conatins #expectedAlbums albums" () {
         when:
-            Band newBand= new Band(
-                name: "test name", 
+            Band newBand = new Band(
+                name: "test name"
             )
             newBand.save()
            
@@ -90,8 +92,8 @@ class BandSpec extends Specification {
     @Unroll
     void "test when adding #memberCount members to an band, the band conatins #expectedMembers members" () {
         when:
-            Band newBand= new Band(
-                name: "test name", 
+            Band newBand = new Band(
+                name: "test name"
             )
             newBand.save()
            

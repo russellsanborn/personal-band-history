@@ -20,24 +20,26 @@ class MemberSpec extends Specification {
     @Unroll
     void "test #creates a member with name: '#name', instrument: '#instrument', startDate: '#startDate', endDate: '#endDate'"() {
         when:
-            Member newMember= new Member(
+            Member newMember = new Member(
                 name: name, 
                 instrument: instrument,
                 startDate: startDate,
                 endDate: endDate
             )
             newMember.save()
-            Member createdMember = Member.findByName(name)
+            Member createdMember = Member.first()
         then:
             if (creates == "creates") {
                 assert createdMember
+                Member.count() == 1
                 createdMember.name == name
-                createdMember.instrument = instrument
-                createdMember.startDate = startDate
-                createdMember.endDate = endDate
+                createdMember.instrument == instrument
+                createdMember.startDate == startDate
+                createdMember.endDate == endDate
             }
             else {
                 assert !createdMember
+                Member.count() == 0
             }
         where:
             name        | instrument  | startDate                 | endDate                   ||  creates
