@@ -17,30 +17,33 @@ class SongSpec extends Specification {
     }
 
     @Unroll
-    void "test #creates a song with name: '#name', lyrics: '#lyrics'"() {
+    void "test #creates a song with name: '#name', lyrics: '#lyrics', trackNum: '#trackNum'"() {
         when:
             Song newSong = new Song(
                 name: name, 
-                lyrics: lyrics
+                lyrics: lyrics,
+                trackNum: trackNum
             )
             newSong.save()
             Song createdSong = Song.first()
         then:
             if (creates == "creates") {
                 assert createdSong
-                Song.count() == 1
-                createdSong.name == name
-                createdSong.lyrics == lyrics
+                assert Song.count() == 1
+                assert createdSong.name == name
+                assert createdSong.lyrics == lyrics
+                assert createdSong.trackNum == trackNum
             }
             else {
                 assert !createdSong
-                Song.count() == 1
+                assert Song.count() == 0
             }
         where:
-            name        | lyrics        ||  creates
-            ""          | ""            || "does not create"
-            ""          | "test lyrics" || "does not create"
-            "test name" | ""            || "creates"
-            "test name" | "test lyrics" || "creates"
+            name        | lyrics        | trackNum  ||  creates
+            null        | null          | null      || "does not create"
+            null        | "test lyrics" | null      || "does not create"
+            null        | null          | 5         || "does not create"
+            "test name" | null          | null      || "creates"
+            "test name" | "test lyrics" | 5         || "creates"
     }
 }

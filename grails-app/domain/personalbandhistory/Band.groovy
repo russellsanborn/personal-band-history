@@ -13,7 +13,7 @@ class Band {
     static hasMany = [members: Member, albums: Album]
     
     static constraints = {
-        bio         (nullable: true)
+        bio         (nullable: true, blank:true)
         name        (nullable: false, blank: false)
         location    (nullable: true)
         startDate   (nullable: true)

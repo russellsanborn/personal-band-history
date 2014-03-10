@@ -31,23 +31,23 @@ class MemberSpec extends Specification {
         then:
             if (creates == "creates") {
                 assert createdMember
-                Member.count() == 1
-                createdMember.name == name
-                createdMember.instrument == instrument
-                createdMember.startDate == startDate
-                createdMember.endDate == endDate
+                assert Member.count() == 1
+                assert createdMember.name == name
+                assert createdMember.instrument == instrument
+                assert createdMember.startDate == startDate
+                assert createdMember.endDate == endDate
             }
             else {
                 assert !createdMember
-                Member.count() == 0
+                assert Member.count() == 0
             }
         where:
             name        | instrument  | startDate                 | endDate                   ||  creates
-            ""          | ""          | null                      | null                      || "does not create"
-            ""          | "test inst" | null                      | null                      || "does not create"
-            ""          | ""          | new LocalDate(2011, 1, 1) | null                      || "does not create"
-            ""          | ""          | null                      | new LocalDate(2014, 1, 1) || "does not create"
-            "test name" | ""          | null                      | null                      || "creates"
+            null        | null        | null                      | null                      || "does not create"
+            null        | "test inst" | null                      | null                      || "does not create"
+            null        | null        | new LocalDate(2011, 1, 1) | null                      || "does not create"
+            null        | null        | null                      | new LocalDate(2014, 1, 1) || "does not create"
+            "test name" | null        | null                      | null                      || "creates"
             "test name" | "test inst" | new LocalDate(2011, 1, 1) | new LocalDate(2014, 1, 1) || "creates"
     }
 }

@@ -18,10 +18,12 @@ class SongServiceSpec extends Specification {
         when:
             String newName = "test name"
             String newLyrics = "test lyrics"
+            Integer newTrackNum = 5
         
             CreateSongCommand newCreateSongCommand = new CreateSongCommand (
                 name: newName,
-                lyrics: newLyrics
+                lyrics: newLyrics,
+                trackNum: newTrackNum
             )
             
             Song createdSong = songService.createSong(newCreateSongCommand)
@@ -30,5 +32,6 @@ class SongServiceSpec extends Specification {
             Song.count() == 1
             createdSong.name == newName
             createdSong.lyrics == newLyrics
+            createdSong.trackNum == newTrackNum
     }
 }

@@ -31,23 +31,23 @@ class ConcertSpec extends Specification {
         then:
             if (creates == "creates") {
                 assert createdConcert
-                Concert.count() == 1
-                createdConcert.title == title
-                createdConcert.eventDate == eventDate
-                createdConcert.location == location
-                createdConcert.venueName == venueName
+                assert Concert.count() == 1
+                assert createdConcert.title == title
+                assert createdConcert.eventDate == eventDate
+                assert createdConcert.location == location
+                assert createdConcert.venueName == venueName
             }
             else {
                 assert !createdConcert
-                Concert.count() == 0
+                assert Concert.count() == 0
             }
         where:
             title        | eventDate                 | location   | venueName    ||  creates
-            ""           | null                      | ""         | ""           || "does not create"
-            "test title" | null                      | ""         | ""           || "does not create"
-            ""           | new LocalDate(2011, 1, 1) | ""         | ""           || "creates"
-            ""           | null                      | "test loc" | ""           || "does not create"
-            ""           | null                      | ""         | "test venue" || "does not create"
+            null         | null                      | null       | null         || "does not create"
+            "test title" | null                      | null       | null         || "does not create"
+            null         | new LocalDate(2011, 1, 1) | null       | null         || "creates"
+            null         | null                      | "test loc" | null         || "does not create"
+            null         | null                      | null       | "test venue" || "does not create"
             "test title" | new LocalDate(2011, 1, 1) | "test loc" | "test venue" || "creates"
     }
 

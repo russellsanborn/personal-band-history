@@ -5,7 +5,8 @@ class SongService {
     Song createSong (CreateSongCommand cmd) {
         new Song(
             name: cmd.name,
-            lyrics: cmd.lyrics
+            lyrics: cmd.lyrics,
+            trackNum: cmd.trackNum
         ).save()
     }
 }

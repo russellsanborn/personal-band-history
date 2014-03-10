@@ -10,7 +10,7 @@ class Member {
     LocalDate endDate
 
     static constraints = {
-        instrument  (nullable: true)
+        instrument  (nullable: true, blank: true)
         name        (nullable: false, blank: false)
         startDate   (nullable: true)
         endDate     (nullable: true)

@@ -42,25 +42,25 @@ class BandSpec extends Specification {
         then:
             if (creates == "creates") {
                 assert createdBand
-                Band.count() == 1
-                createdBand.name == name
-                createdBand.bio == bio
-                createdBand.location == location
-                createdBand.startDate == startDate
-                createdBand.endDate == endDate
+                assert Band.count() == 1
+                assert createdBand.name == name
+                assert createdBand.bio == bio
+                assert createdBand.location == location
+                assert createdBand.startDate == startDate
+                assert createdBand.endDate == endDate
             }
             else {
                 assert !createdBand
-                Band.count() == 0
+                assert Band.count() == 0
             }
         where:
             name        | bio        | location   | startDate                 | endDate                   ||  creates
-            ""          | ""         | ""         | null                      | null                      || "does not create"
-            ""          | "test bio" | ""         | null                      | null                      || "does not create"
-            ""          | ""         | "test loc" | null                      | null                      || "does not create"
-            ""          | ""         | ""         | new LocalDate(2011, 1, 1) | null                      || "does not create"
-            ""          | ""         | ""         | null                      | new LocalDate(2014, 1, 1) || "does not create"
-            "test name" | ""         | ""         | null                      | null                      || "creates"
+            null        | null       | null       | null                      | null                      || "does not create"
+            null        | "test bio" | null       | null                      | null                      || "does not create"
+            null        | null       | "test loc" | null                      | null                      || "does not create"
+            null        | null       | null       | new LocalDate(2011, 1, 1) | null                      || "does not create"
+            null        | null       | null       | null                      | new LocalDate(2014, 1, 1) || "does not create"
+            "test name" | null       | null       | null                      | null                      || "creates"
             "test name" | "test bio" | "test loc" | new LocalDate(2011, 1, 1) | new LocalDate(2014, 1, 1) || "creates"
     }
     

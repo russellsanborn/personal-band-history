@@ -31,18 +31,18 @@ class AlbumSpec extends Specification {
         then:
             if (creates == "creates") {
                 assert createdAlbum
-                Album.count() == 1
-                createdAlbum.name == name
-                createdAlbum.releaseDate == releaseDate
+                assert Album.count() == 1
+                assert createdAlbum.name == name
+                assert createdAlbum.releaseDate == releaseDate
             }
             else {
                 assert !createdAlbum
-                Album.count() == 0
+                assert Album.count() == 0
             }
         where:
             name        | releaseDate               ||  creates
-            ""          | null                      || "does not create"
-            ""          | new LocalDate(2011, 1, 1) || "does not create"
+            null        | null                      || "does not create"
+            null        | new LocalDate(2011, 1, 1) || "does not create"
             "test name" | null                      || "creates"
             "test name" | new LocalDate(2011, 1, 1) || "creates"
     }
