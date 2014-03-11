@@ -27,17 +27,20 @@
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Personal Band History</a>
+                        <a class="navbar-brand" href="${createLink(uri: '/')}">Personal Band History</a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
+                            <li class="${controllerName == null ? 'active' : ''}"><a href="${createLink(uri: '/')}">Home</a></li>
+                            <li class="${controllerName == 'band' ? 'active' : ''}"><g:link controller="band" action="list">Bands</g:link></li>
+                            <li class="${controllerName == 'song' ? 'active' : ''}"><g:link controller="song" action="list">Songs</g:link></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
 
             <div class="container">
+                
                 <g:layoutBody/>
             </div>
             <r:layoutResources />

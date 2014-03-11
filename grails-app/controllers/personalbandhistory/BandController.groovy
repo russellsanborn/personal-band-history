@@ -4,6 +4,10 @@ import org.joda.time.LocalDate
 
 class BandController {
     
+    def list() {
+        [bands: Band.listOrderByName()]
+    }
+    
     def show(Long id) {
         Band band = Band.get(id)
 
