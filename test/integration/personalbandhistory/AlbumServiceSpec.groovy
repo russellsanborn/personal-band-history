@@ -65,8 +65,8 @@ class AlbumServiceSpec extends Specification {
             
             Album createdAlbum = albumService.createAlbum(newCreateAlbumCommand)
             
-            albumService.addSong(createdAlbum, newSongName1, "test lyrics")
-            albumService.addSong(createdAlbum, newSongName2, "test lyrics")
+            albumService.addSong(createdAlbum, newSongName1, "test lyrics", 01)
+            albumService.addSong(createdAlbum, newSongName2, "test lyrics", 02)
         then:
             assert createdAlbum.songs.size() == 2
             assert Song.findByName(newSongName1)

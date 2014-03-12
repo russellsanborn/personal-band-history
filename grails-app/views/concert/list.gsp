@@ -3,15 +3,15 @@
 <html>
 <head>
   <meta name="layout" content="main"/>
-  <title>Bands</title>
+  <title>Concerts</title>
 </head>
 
 <body>
-  <h2 id="band_name">Bands</h2>
+  <h2 id="concert_name">Concerts</h2>
     <div class="list-group">
         <ul class="list-group">
-            <g:each in="${bands}">
-                <g:link controller="band" action="show" id="${it?.id}" class="list-group-item">${it?.name}</g:link>
+            <g:each in="${concerts}">
+                <g:link controller="concert" action="show" id="${it?.id}" class="list-group-item">${it?.eventDate}</g:link>
             </g:each>
         </ul>
     </div>   

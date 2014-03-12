@@ -11,10 +11,11 @@ class AlbumService {
         ).save()
     }
     
-    Song addSong(Album album, String name, String lyrics) {
+    Song addSong(Album album, String name, String lyrics, Integer trackNum) {
         Song newSong = new Song (
             name: name,
-            lyrics: lyrics
+            lyrics: lyrics,
+            trackNum: trackNum
         ).save()
         
         album.addToSongs(newSong)

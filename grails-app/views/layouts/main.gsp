@@ -33,7 +33,10 @@
                         <ul class="nav navbar-nav">
                             <li class="${controllerName == null ? 'active' : ''}"><a href="${createLink(uri: '/')}">Home</a></li>
                             <li class="${controllerName == 'band' ? 'active' : ''}"><g:link controller="band" action="list">Bands</g:link></li>
+                            <li class="${controllerName == 'album' ? 'active' : ''}"><g:link controller="album" action="list">Albums</g:link></li>
                             <li class="${controllerName == 'song' ? 'active' : ''}"><g:link controller="song" action="list">Songs</g:link></li>
+                            <li class="${controllerName == 'member' ? 'active' : ''}"><g:link controller="member" action="list">Members</g:link></li>
+                            <li class="${controllerName == 'concert' ? 'active' : ''}"><g:link controller="concert" action="list">Concerts</g:link></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
