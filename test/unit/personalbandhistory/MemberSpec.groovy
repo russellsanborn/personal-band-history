@@ -50,4 +50,26 @@ class MemberSpec extends Specification {
             "test name" | null        | null                      | null                      || "creates"
             "test name" | "test inst" | new LocalDate(2011, 1, 1) | new LocalDate(2014, 1, 1) || "creates"
     }
+
+    @Unroll
+    void "with start date: '#startDate', end date: '#endDate', getDateRange() should return '#expectedDateRange'" () {
+        when:
+            Member newMember = new Member(
+                name: "test name",
+                startDate: startDate,
+                endDate: endDate
+            )
+            newMember.save()
+            
+        then:
+            assert newMember.getDateRange() == expectedMemberDate
+        
+        where:
+            startDate                   | endDate                   || expectedMemberDate
+            null                        | null                      || "???? - ????"
+            new LocalDate(2011, 1, 1)   | null                      || "2011 - ????"
+            null                        | new LocalDate(2011, 1, 1) || "???? - 2011"
+            new LocalDate(1995, 2, 2)   | new LocalDate(2011, 1, 1) || "1995 - 2011"
+    }
+    
 }

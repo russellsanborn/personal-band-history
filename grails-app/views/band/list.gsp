@@ -8,12 +8,19 @@
 
 <body>
   <h2 id="band_name">Bands</h2>
-    <div class="list-group">
-        <ul class="list-group">
-            <g:each in="${bands}">
-                <g:link controller="band" action="show" id="${it?.id}" class="list-group-item">${it?.name}</g:link>
-            </g:each>
-        </ul>
-    </div>   
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>Band</th>
+            <th>Active</th>
+            <th>Location</th>
+        </tr>
+        <g:each in="${bands}">
+            <tr>
+                <td><g:link controller="band" action="show" id="${it?.id}">${it?.name}</g:link></td>
+                <td>${it?.getDateRange()}</td>
+                <td>${it?.location}</td>
+            </tr>    
+        </g:each>
+    </table>   
 </body>
 </html>

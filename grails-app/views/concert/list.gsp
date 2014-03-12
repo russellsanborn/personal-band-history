@@ -8,12 +8,19 @@
 
 <body>
   <h2 id="concert_name">Concerts</h2>
-    <div class="list-group">
-        <ul class="list-group">
-            <g:each in="${concerts}">
-                <g:link controller="concert" action="show" id="${it?.id}" class="list-group-item">${it?.eventDate}</g:link>
-            </g:each>
-        </ul>
-    </div>   
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>Date</th>
+            <th>Venue</th>
+            <th>Location</th>
+        </tr>
+        <g:each in="${concerts}">
+            <tr>
+                <td><g:link controller="concert" action="show" id="${it?.id}">${it?.eventDate}</g:link></td>
+                <td>${it?.venueName}</td>
+                <td>${it?.location}</td>
+            </tr>    
+        </g:each>
+    </table> 
 </body>
 </html>

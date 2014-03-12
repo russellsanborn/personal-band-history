@@ -23,4 +23,5 @@ class AlbumController {
 class CreateAlbumCommand {
     String Name
     LocalDate releaseDate
+    Band band
 }

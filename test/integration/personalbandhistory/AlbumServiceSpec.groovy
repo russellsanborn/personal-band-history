@@ -8,8 +8,11 @@ import org.joda.time.LocalDate
  */
 class AlbumServiceSpec extends Specification {
     AlbumService albumService
+    Band newBand
     
     def setup() {
+        newBand = new Band(name: "test name")
+        newBand.save(validate: false)
     }
 
     def cleanup() {
@@ -22,7 +25,8 @@ class AlbumServiceSpec extends Specification {
         
             CreateAlbumCommand newCreateAlbumCommand = new CreateAlbumCommand (
                 name: newName,
-                releaseDate: newReleaseDate
+                releaseDate: newReleaseDate,
+                band: newBand
             )
             
             Album createdAlbum = albumService.createAlbum(newCreateAlbumCommand)
@@ -40,7 +44,8 @@ class AlbumServiceSpec extends Specification {
         
             CreateAlbumCommand newCreateAlbumCommand = new CreateAlbumCommand (
                 name: "test album name",
-                releaseDate: new LocalDate(2011, 1, 1)
+                releaseDate: new LocalDate(2011, 1, 1),
+                band: newBand
             )
             
             Album createdAlbum = albumService.createAlbum(newCreateAlbumCommand)
@@ -60,7 +65,8 @@ class AlbumServiceSpec extends Specification {
         
             CreateAlbumCommand newCreateAlbumCommand = new CreateAlbumCommand (
                 name: "test album name",
-                releaseDate: new LocalDate(2011, 1, 1)
+                releaseDate: new LocalDate(2011, 1, 1),
+                band: newBand
             )
             
             Album createdAlbum = albumService.createAlbum(newCreateAlbumCommand)

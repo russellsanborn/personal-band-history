@@ -8,12 +8,19 @@
 
 <body>
   <h2 id="album_name">Albums</h2>
-    <div class="list-group">
-        <ul class="list-group">
-            <g:each in="${albums}">
-                <g:link controller="album" action="show" id="${it?.id}" class="list-group-item">${it?.name}</g:link>
-            </g:each>
-        </ul>
-    </div>   
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>Album</th>
+            <th>Release Date</th>
+            <th>Band</th>
+        </tr>
+        <g:each in="${albums}">
+            <tr>
+                <td><g:link controller="album" action="show" id="${it?.id}">${it?.name}</g:link></td>
+                <td>${it?.getAlbumDate()}</td>
+                <td><g:link controller="band" action="show" id="${it?.band?.id}">${it?.band?.name}</g:link></td>
+            </tr>    
+        </g:each>
+    </table>   
 </body>
 </html>

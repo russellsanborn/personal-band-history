@@ -7,7 +7,8 @@ class AlbumService {
     Album createAlbum (CreateAlbumCommand cmd) {
         new Album(
             name: cmd.name,
-            releaseDate: cmd.releaseDate
+            releaseDate: cmd.releaseDate,
+            band: cmd.band
         ).save()
     }
     

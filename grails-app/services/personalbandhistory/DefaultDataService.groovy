@@ -12,7 +12,7 @@ class DefaultDataService {
     def loadDefaultDevData() {
         
         // Create test bands
-        bandService.createBand(new CreateBandCommand(
+        Band deathByBobcat = bandService.createBand(new CreateBandCommand(
             bio: "Flint, MI Punk Rock",
             name: "Death By Bobcat",
             location: "Flint, MI",
@@ -56,7 +56,8 @@ class DefaultDataService {
         // Create album and add songs/members to it
         Album weGotANuke = albumService.createAlbum(new CreateAlbumCommand(
             name: "We Got A Nuke",
-            releaseDate: new LocalDate(2004, 9, 25))
+            releaseDate: new LocalDate(2004, 9, 25),
+            band: deathByBobcat)
         )
         
         albumService.addSong(weGotANuke, "Intro Song", "lyrics", 1)

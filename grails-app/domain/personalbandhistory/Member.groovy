@@ -15,4 +15,25 @@ class Member {
         startDate   (nullable: true)
         endDate     (nullable: true)
     }
+    
+    String getDateRange() {
+        String startDateReturnString
+        String endDateReturnString
+        
+        if (startDate) {
+            startDateReturnString = startDate.toString("yyyy")
+        }
+        else {
+            startDateReturnString = "????"
+        }
+        
+        if (endDate) {
+            endDateReturnString = endDate.toString("yyyy")
+        }
+        else {
+            endDateReturnString = "????"
+        }
+
+        return startDateReturnString + " - " + endDateReturnString
+    }
 }

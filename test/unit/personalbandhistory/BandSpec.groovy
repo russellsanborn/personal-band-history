@@ -113,4 +113,25 @@ class BandSpec extends Specification {
            1              || 1
            3              || 3 
     }
+    
+    @Unroll
+    void "with start date: '#startDate', end date: '#endDate', getDateRange() should return '#expectedDateRange'" () {
+        when:
+            Band newBand = new Band(
+                name: "test name",
+                startDate: startDate,
+                endDate: endDate
+            )
+            newBand.save()
+            
+        then:
+            assert newBand.getDateRange() == expectedBandDate
+        
+        where:
+            startDate                   | endDate                   || expectedBandDate
+            null                        | null                      || "???? - ????"
+            new LocalDate(2011, 1, 1)   | null                      || "2011 - ????"
+            null                        | new LocalDate(2011, 1, 1) || "???? - 2011"
+            new LocalDate(1995, 2, 2)   | new LocalDate(2011, 1, 1) || "1995 - 2011"
+    }
 }

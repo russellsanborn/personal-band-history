@@ -10,10 +10,14 @@ import org.joda.time.LocalDate
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Album)
-@Mock([Song, Member])
+@Mock([Song, Member, Band])
 class AlbumSpec extends Specification {
-
+    
+    Band newBand
+    
     def setup() {
+        newBand = new Band()
+        newBand.save(validate: false)
     }
 
     def cleanup() {
@@ -22,9 +26,11 @@ class AlbumSpec extends Specification {
     @Unroll
     void "test #creates an album with name: '#name', releaseDate: '#releaseDate'"() {
         when:
+            
             Album newAlbum = new Album(
                 name: name, 
-                releaseDate: releaseDate
+                releaseDate: releaseDate,
+                band: newBand
             )
             newAlbum.save()
             Album createdAlbum = Album.first()
@@ -51,7 +57,8 @@ class AlbumSpec extends Specification {
     void "test when adding #songCount songs to an album, the album conatins #expectedSongs songs" () {
         when:
             Album newAlbum = new Album(
-                name: "test name"
+                name: "test name",
+                band: newBand
             )
             newAlbum.save()
            
@@ -76,7 +83,8 @@ class AlbumSpec extends Specification {
     void "test when adding #memberCount members to an album, the album conatins #expectedMembers members" () {
         when:
             Album newAlbum = new Album(
-                name: "test name"
+                name: "test name",
+                band: newBand
             )
             newAlbum.save()
            
@@ -95,5 +103,25 @@ class AlbumSpec extends Specification {
            memberCount    || expectedMembers
            1            || 1
            3            || 3
+    }
+    
+    @Unroll
+    void "with release date '#releaseDate' getAlbumDate() should return '#expectedAlbumDate'" () {
+        when:
+            Album newAlbum = new Album(
+                name: "test name",
+                releaseDate: releaseDate,
+                band: newBand
+            )
+            newAlbum.save()
+            
+        then:
+            assert newAlbum.getAlbumDate() == expectedAlbumDate
+        
+        where:
+            releaseDate                 || expectedAlbumDate
+            null                        || "????"
+            new LocalDate(2011, 1, 1)   || "2011"
+            new LocalDate(1995, 2, 2)   || "1995"
     }
 }

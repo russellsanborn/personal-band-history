@@ -12,9 +12,7 @@
     <div class="col-md-6">
         Title: ${concert?.title}</br>
         Venue: ${concert?.venueName}</br>
-        <g:if test="${concert?.eventDate}"> 
-            Event Date: ${concert?.eventDate.toString("yyyy")}</br>
-        </g:if>
+        Event Date: ${concert?.eventDate()}</br>
         Location: ${concert?.location}</br>
         <ul class="list-group">
             <g:each in="${bands}">

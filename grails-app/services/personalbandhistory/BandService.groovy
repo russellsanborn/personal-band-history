@@ -17,7 +17,8 @@ class BandService {
     Album addAlbum(Band band, String name, LocalDate releaseDate) {
         Album newAlbum = new Album (
             name: name,
-            releaseDate: releaseDate
+            releaseDate: releaseDate,
+            band: band
         ).save()
         
         band.addToAlbums(newAlbum)

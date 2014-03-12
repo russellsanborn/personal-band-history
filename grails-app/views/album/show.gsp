@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-md-6">
         Insert Picture Here</br>
-        Release Date: ${album?.releaseDate.toString("yyyy")}</br>
+        Release Date: ${album?.getAlbumDate()}</br>
         <h3>Members</h3>
         <ul class="list-group">
             <g:each in="${members}">

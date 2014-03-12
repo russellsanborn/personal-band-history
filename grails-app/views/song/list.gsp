@@ -7,13 +7,15 @@
 </head>
 
 <body>
-  <h2 id="song_name">Songs</h2>
-    <div class="list-group">
-        <ul class="list-group">
-            <g:each in="${songs}">
-                <g:link controller="song" action="show" id="${it?.id}" class="list-group-item">${it?.name}</g:link>
-            </g:each>
-        </ul>
-    </div>   
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>Song</th>
+        </tr>
+        <g:each in="${songs}">
+            <tr>
+                <td><g:link controller="song" action="show" id="${it?.id}">${it?.name}</g:link></td>
+            </tr>    
+        </g:each>
+    </table>   
 </body>
 </html>
