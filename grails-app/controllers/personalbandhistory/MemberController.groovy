@@ -3,7 +3,7 @@ package personalbandhistory
 import org.joda.time.LocalDate
 
 class MemberController {
-    
+    /*
     def list() {
         [members: Member.listOrderByName()]
     }
@@ -17,7 +17,7 @@ class MemberController {
 
         [member: member]
     }
-
+    */
 }
 
 class CreateMemberCommand {
