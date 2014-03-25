@@ -10,7 +10,9 @@
   <h2 id="album_name">${album.name}</h2>
   <div class="row">
     <div class="col-md-6">
-        Insert Picture Here</br>
+        <g:if test="${album.albumImage}">
+            <img class="img-rounded img-responsive" src="${createLink(controller:'album', action:'album_image', id:album.id)}" />
+        </g:if>
         Release Date: ${album?.getAlbumDate()}</br>
         <h3>Members</h3>
         <ul class="list-group">

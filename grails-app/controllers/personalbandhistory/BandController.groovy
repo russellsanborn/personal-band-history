@@ -17,6 +17,17 @@ class BandController {
 
         [band: band]
     }
+    
+    def band_image() {
+        def band = Band.get(params.id)
+        if (!band) {
+          response.sendError(404)
+          return
+        }
+        OutputStream out = response.outputStream
+        out.write(band?.bandImage)
+        out.close()
+    }
 }
 
 class CreateBandCommand {

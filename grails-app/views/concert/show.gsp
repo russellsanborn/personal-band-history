@@ -12,7 +12,7 @@
     <div class="col-md-6">
         Title: ${concert?.title}</br>
         Venue: ${concert?.venueName}</br>
-        Event Date: ${concert?.eventDate()}</br>
+        Event Date: ${concert?.eventDate}</br>
         Location: ${concert?.location}</br>
         <ul class="list-group">
             <g:each in="${bands}">

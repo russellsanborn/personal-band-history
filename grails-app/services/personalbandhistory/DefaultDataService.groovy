@@ -20,6 +20,10 @@ class DefaultDataService {
             endDate: new LocalDate(2009, 12, 25))
         )
         
+        File deathByBobcatImage = new File('web-app/images/DeathByBobcat.png')
+        deathByBobcat.bandImage = deathByBobcatImage.bytes
+        deathByBobcat.save()
+        
         bandService.createBand(new CreateBandCommand(
             bio: "We're Better Than You",
             name: "The Hypocrites",
@@ -77,6 +81,11 @@ class DefaultDataService {
         albumService.addMember(weGotANuke, "Russell", "Guitar/Vocals", null, null)
         albumService.addMember(weGotANuke, "Mike", "Drums/Vocals", null, null)
         albumService.addMember(weGotANuke, "Derek", "Bass/Vocals", null, null)
+
+        File weGotANukeImage = new File('web-app/images/WeGotANukeAlbum.jpg')
+        weGotANuke.albumImage = weGotANukeImage.bytes
+        weGotANuke.save()
+        
         
         concertService.createConcert(new CreateConcertCommand(
                 eventDate: new LocalDate(2000,1,1),

@@ -18,6 +18,17 @@ class AlbumController {
         songs: album.songs.sort {it.trackNum},
         members: album.members.sort {it.name}]
     }
+    
+    def album_image() {
+        def album = Album.get(params.id)
+        if (!album) {
+          response.sendError(404)
+          return
+        }
+        OutputStream out = response.outputStream
+        out.write(album?.albumImage)
+        out.close()
+    }
 }
 
 class CreateAlbumCommand {

@@ -6,6 +6,7 @@ class Album {
     
     String name
     LocalDate releaseDate
+    byte[] albumImage
     
     static hasMany = [songs: Song, members: Member]
     
@@ -14,6 +15,7 @@ class Album {
     static constraints = {
         name        (nullable: false, blank: false)
         releaseDate (nullable: true)
+        albumImage   (nullable: true, maxSize: 5242880)
     }
     
     String getAlbumDate() {

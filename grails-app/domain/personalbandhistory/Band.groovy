@@ -9,6 +9,7 @@ class Band {
     String location
     LocalDate startDate
     LocalDate endDate
+    byte[] bandImage
     
     static hasMany = [members: Member, albums: Album]
     
@@ -18,6 +19,7 @@ class Band {
         location    (nullable: true)
         startDate   (nullable: true)
         endDate     (nullable: true)
+        bandImage   (nullable: true, maxSize: 5242880)
     }
     
     String getDateRange() {
