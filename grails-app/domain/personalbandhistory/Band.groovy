@@ -22,6 +22,10 @@ class Band {
         bandImage   (nullable: true, maxSize: 5242880)
     }
     
+    String toString() {
+        return name
+    }
+    
     String getDateRange() {
         String startDateReturnString
         String endDateReturnString

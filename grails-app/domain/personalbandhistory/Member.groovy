@@ -16,6 +16,10 @@ class Member {
         endDate     (nullable: true)
     }
     
+    String toString() {
+        return name + ": " + getDateRange() + ": " + instrument
+    }
+    
     String getDateRange() {
         String startDateReturnString
         String endDateReturnString

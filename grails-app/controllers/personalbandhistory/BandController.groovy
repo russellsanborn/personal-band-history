@@ -3,6 +3,11 @@ package personalbandhistory
 import org.joda.time.LocalDate
 
 class BandController {
+    def scaffold = true
+    
+    def index () {
+        redirect(action: "list")
+    }    
     
     def list() {
         [bands: Band.listOrderByName()]
@@ -15,7 +20,9 @@ class BandController {
             redirect uri: '/'
         }
 
-        [band: band]
+        [band: band, 
+        members: band.members.sort {it.name},
+        albums: band.albums.sort {it.name}]
     }
     
     def band_image() {

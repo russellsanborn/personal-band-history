@@ -16,8 +16,21 @@
         Location: ${band?.location}</br>
         Active: ${band?.getDateRange()}</br>
         Bio: ${band?.bio}</br>
+
+        <h3>Members</h3>
+        <ul class="list-group">
+            <g:each in="${members}">
+                <g:link controller="member" action="show" id="${it?.id}" class="list-group-item">${it?.toString()}</g:link>
+            </g:each>
+        </ul>
+
+        <h3>Albums</h3>
+        <ul class="list-group">
+            <g:each in="${albums}">
+                <g:link controller="album" action="show" id="${it?.id}" class="list-group-item">${it?.name}</g:link>
+            </g:each>
+        </ul>
     </div>
-  
   </div>
     
 </body>

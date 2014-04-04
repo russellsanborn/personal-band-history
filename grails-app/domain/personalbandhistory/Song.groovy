@@ -11,4 +11,8 @@ class Song {
         lyrics  (nullable: true, blank: true)
         trackNum(nullable: true)
     }
+    
+    String toString() {
+        return trackNum + ": " + name
+    }
 }

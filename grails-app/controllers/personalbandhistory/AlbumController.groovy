@@ -3,6 +3,12 @@ package personalbandhistory
 import org.joda.time.LocalDate
 
 class AlbumController {
+    def scaffold = true
+    
+    def index () {
+        redirect(action: "list")
+    }    
+    
     def list() {
         [albums: Album.listOrderByName()]
     }

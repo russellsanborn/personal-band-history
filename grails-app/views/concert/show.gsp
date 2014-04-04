@@ -10,7 +10,6 @@
   <h2 id="concert_name">${concert?.title}</h2>
   <div class="row">
     <div class="col-md-6">
-        Title: ${concert?.title}</br>
         Venue: ${concert?.venueName}</br>
         Event Date: ${concert?.eventDate}</br>
         Location: ${concert?.location}</br>

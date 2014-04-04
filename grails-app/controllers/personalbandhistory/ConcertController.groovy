@@ -3,6 +3,11 @@ package personalbandhistory
 import org.joda.time.LocalDate
 
 class ConcertController {
+    def scaffold = true
+    
+    def index () {
+        redirect(action: "list")
+    }    
     
     def list() {
         [concerts: Concert.listOrderByEventDate()]
