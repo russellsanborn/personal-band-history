@@ -29,6 +29,9 @@
         </ul>
     </div>
   </div>
-    
+        
+    <div id="edit_album_button">
+        <g:link action="edit" id="${album?.id}" class="btn btn-success">Edit</g:link>
+    </div>  
 </body>
 </html>

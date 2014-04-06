@@ -32,6 +32,11 @@
         </ul>
     </div>
   </div>
+  
+        
+    <div id="edit_band_button">
+        <g:link action="edit" id="${band?.id}" class="btn btn-success">Edit</g:link>
+    </div>
     
 </body>
 </html>

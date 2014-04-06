@@ -21,7 +21,9 @@
     </div>
     </div>
   
-  </div>
+    <div id="edit_concert_button">
+        <g:link action="edit" id="${concert?.id}" class="btn btn-success">Edit</g:link>
+    </div>
     
 </body>
 </html>

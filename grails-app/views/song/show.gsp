@@ -15,6 +15,9 @@
     </p>
     
   </div>
-    
+  
+    <div id="edit_show_button">
+        <g:link action="edit" id="${song?.id}" class="btn btn-success">Edit</g:link>
+    </div>
 </body>
 </html>
