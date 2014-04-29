@@ -118,13 +118,35 @@ log4j = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'personalbandhistory.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'personalbandhistory.UserRole'
 grails.plugin.springsecurity.authority.className = 'personalbandhistory.Role'
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
+
+grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
+grails.plugin.springsecurity.interceptUrlMap = [
+    '/user/edit/*':         ['IS_AUTHENTICATED_REMEMBERED'],
+    '/user/update/*':       ['IS_AUTHENTICATED_REMEMBERED'],
+    '/user/update':         ['IS_AUTHENTICATED_REMEMBERED'],
+    '/user/index':          ['IS_AUTHENTICATED_REMEMBERED'],
+    '/user/**':             ['ROLE_ADMIN'],
+    '/album/list':          ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/album/show/*':        ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/album/index':         ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/album/album_image/*': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/album/album_image':   ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/album/**':            ['IS_AUTHENTICATED_REMEMBERED'],
+    '/band/list':           ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/band/show/*':         ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/band/index':          ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/band/band_image/*':   ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/band/band_image':     ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/band/**':             ['IS_AUTHENTICATED_REMEMBERED'],
+    '/concert/list':        ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/concert/show/*':      ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/concert/index':       ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/concert/**':          ['IS_AUTHENTICATED_REMEMBERED'],
+    '/song/list':           ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/song/show/*':         ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/song/index':          ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/song/**':             ['IS_AUTHENTICATED_REMEMBERED'],
+    '/member/**':             ['IS_AUTHENTICATED_REMEMBERED'],
+    '/**':                  ['IS_AUTHENTICATED_ANONYMOUSLY']
 ]
 

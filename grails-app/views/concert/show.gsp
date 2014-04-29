@@ -20,10 +20,10 @@
         </ul>
     </div>
     </div>
-  
+  <sec:ifAnyGranted roles="ROLE_USER,ROLE_ADMIN">
     <div id="edit_concert_button">
         <g:link action="edit" id="${concert?.id}" class="btn btn-success">Edit</g:link>
     </div>
-    
+  </sec:ifAnyGranted>  
 </body>
 </html>

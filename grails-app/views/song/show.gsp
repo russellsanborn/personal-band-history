@@ -16,8 +16,10 @@
     
   </div>
   
+  <sec:ifAnyGranted roles="ROLE_USER,ROLE_ADMIN">
     <div id="edit_show_button">
         <g:link action="edit" id="${song?.id}" class="btn btn-success">Edit</g:link>
     </div>
+  </sec:ifAnyGranted>  
 </body>
 </html>

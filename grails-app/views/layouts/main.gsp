@@ -31,10 +31,43 @@
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="${controllerName == 'band' ? 'active' : ''}"><g:link controller="band" action="list">Bands</g:link></li>
-                            <li class="${controllerName == 'album' ? 'active' : ''}"><g:link controller="album" action="list">Albums</g:link></li>
-                            <li class="${controllerName == 'song' ? 'active' : ''}"><g:link controller="song" action="list">Songs</g:link></li>
-                            <li class="${controllerName == 'concert' ? 'active' : ''}"><g:link controller="concert" action="list">Concerts</g:link></li>
+                            <sec:ifNotGranted roles="ROLE_USER,ROLE_ADMIN">
+                                <li class="${controllerName == 'band' ? 'active' : ''}"><g:link controller="band" action="list">Bands</g:link></li>
+                                <li class="${controllerName == 'album' ? 'active' : ''}"><g:link controller="album" action="list">Albums</g:link></li>
+                                <li class="${controllerName == 'song' ? 'active' : ''}"><g:link controller="song" action="list">Songs</g:link></li>
+                                <li class="${controllerName == 'concert' ? 'active' : ''}"><g:link controller="concert" action="list">Concerts</g:link></li>
+                            </sec:ifNotGranted>      
+                            <sec:ifAnyGranted roles="ROLE_USER,ROLE_ADMIN">
+                                <li class="dropdown ${controllerName == 'band' ? 'active' : ''}">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bands <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                      <li><g:link controller="band" action="list">List Bands</g:link></li>
+                                      <li><g:link controller="band" action="create">Create Band</g:link></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown ${controllerName == 'album' ? 'active' : ''}">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Albums <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                      <li><g:link controller="album" action="list">List Albums</g:link></li>
+                                      <li><g:link controller="album" action="create">Create Album</g:link></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown ${controllerName == 'song' ? 'active' : ''}"> 
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Songs <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                      <li><g:link controller="song" action="list">List Songs</g:link></li>
+                                      <li><g:link controller="song" action="create">Create Song</g:link></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown ${controllerName == 'concert' ? 'active' : ''}">
+                                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Concerts <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                          <li><g:link controller="concert" action="list">List Concerts</g:link></li>
+                                          <li><g:link controller="concert" action="create">Create Concert</g:link></li>
+                                        </ul>
+                                </li>
+
+                            </sec:ifAnyGranted>  
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
