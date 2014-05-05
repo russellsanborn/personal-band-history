@@ -66,7 +66,9 @@
                                           <li><g:link controller="concert" action="create">Create Concert</g:link></li>
                                         </ul>
                                 </li>
-
+                                <li>
+                                    <li><g:link controller="logout" action="index" elementId="log_out_nav_bar_link">Log Out</g:link></li>
+                                </li>
                             </sec:ifAnyGranted>  
                         </ul>
                     </div><!--/.nav-collapse -->

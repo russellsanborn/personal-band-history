@@ -118,6 +118,8 @@ log4j = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'personalbandhistory.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'personalbandhistory.UserRole'
 grails.plugin.springsecurity.authority.className = 'personalbandhistory.Role'
+grails.plugin.springsecurity.logout.postOnly = false
+
 
 grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
 grails.plugin.springsecurity.interceptUrlMap = [
