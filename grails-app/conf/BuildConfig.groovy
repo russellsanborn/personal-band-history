@@ -21,6 +21,8 @@ grails.project.fork = [
     console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
 ]
 
+def seleniumVersion = "2.39.0"
+
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -53,6 +55,11 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.27'
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
+        
+        test "org.gebish:geb-spock:0.9.2"
+        
+        test "org.seleniumhq.selenium:selenium-support:${seleniumVersion}"
+        test "org.seleniumhq.selenium:selenium-firefox-driver:${seleniumVersion}"
     }
 
     plugins {
@@ -87,5 +94,6 @@ grails.project.dependency.resolution = {
         //compile ":handlebars-asset-pipeline:1.0.0.3"
         
         compile ":joda-time:1.4"
+        test ":geb:0.9.2"
     }
 }
