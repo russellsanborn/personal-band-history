@@ -23,8 +23,8 @@
 </div>
 
 <div class="form-group col-md-12">
-    <label for="event_date" class="col-md-2 control-label">Event Date</label>
+    <label for="event_date" class="col-md-2 control-label">Event Date (MM/DD/YYYY)</label>
     <div class="col-md-2">
-        <g:textField name="eventDate" id="event_date" class="form-control" value="${concertInstance?.eventDate}" placeholder="YYYY-MM-DD" />
+        <g:textField name="eventDate" id="event_date" class="form-control" value="${concertInstance?.eventDate}" placeholder="MM/DD/YYYY" />
     </div>
 </div>

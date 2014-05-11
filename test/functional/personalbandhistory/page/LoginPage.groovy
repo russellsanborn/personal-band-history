@@ -8,8 +8,8 @@ class LoginPage extends Page {
     static at = {title == "Login"}
     
     static content = {
-        usernameField {$('input', id:'username')}
-        passwordField {$('input', id:'password')}
+        usernameField(wait: true) {$('input', id:'username')}
+        passwordField(wait: true) {$('input', id:'password')}
         submitButton  {$('input', id:'submit')}
     }
     

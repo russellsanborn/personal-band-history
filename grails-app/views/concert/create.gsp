@@ -1,3 +1,5 @@
+<%@ page import="org.joda.time.LocalDate" contentType="text/html;charset=UTF-8" %>
+
 <html>
 <head>
   <meta name="layout" content="main"/>
@@ -14,5 +16,5 @@
             <g:submitButton name="create" class="save btn btn-success" id="create_concert_button" value="Create Concert" />
 	</fieldset>
     </g:form>
-</body>
+  </body>
 </html>

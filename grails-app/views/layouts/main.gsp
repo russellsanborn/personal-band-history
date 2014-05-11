@@ -39,31 +39,31 @@
                             </sec:ifNotGranted>      
                             <sec:ifAnyGranted roles="ROLE_USER,ROLE_ADMIN">
                                 <li class="dropdown ${controllerName == 'band' ? 'active' : ''}">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bands <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="band_nav_bar_dropdown">Bands <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                       <li><g:link controller="band" action="list">List Bands</g:link></li>
-                                      <li><g:link controller="band" action="create">Create Band</g:link></li>
+                                      <li><g:link controller="band" action="create" elementId="create_band_nav_bar_link">Create Band</g:link></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown ${controllerName == 'album' ? 'active' : ''}">
-                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Albums <b class="caret"></b></a>
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" id="album_nav_bar_dropdown">Albums <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                       <li><g:link controller="album" action="list">List Albums</g:link></li>
-                                      <li><g:link controller="album" action="create">Create Album</g:link></li>
+                                      <li><g:link controller="album" action="create" elementId="create_album_nav_bar_link">Create Album</g:link></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown ${controllerName == 'song' ? 'active' : ''}"> 
-                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Songs <b class="caret"></b></a>
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" id="song_nav_bar_dropdown">Songs <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                       <li><g:link controller="song" action="list">List Songs</g:link></li>
-                                      <li><g:link controller="song" action="create">Create Song</g:link></li>
+                                      <li><g:link controller="song" action="create" elementId="create_song_nav_bar_link">Create Song</g:link></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown ${controllerName == 'concert' ? 'active' : ''}">
-                                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Concerts <b class="caret"></b></a>
+                                        <a href="" class="dropdown-toggle" data-toggle="dropdown" id="concert_nav_bar_dropdown">Concerts <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                           <li><g:link controller="concert" action="list">List Concerts</g:link></li>
-                                          <li><g:link controller="concert" action="create">Create Concert</g:link></li>
+                                          <li><g:link controller="concert" action="create" elementId="create_concert_nav_bar_link">Create Concert</g:link></li>
                                         </ul>
                                 </li>
                                 <li>
